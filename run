@@ -1,0 +1,10 @@
+#!/bin/env bash
+export FLASK_APP=app
+export FLASK_ENV=development
+export DBNAME=brilab
+export DBUSER=brilab
+export DBPASS=elgatopercy
+export DBHOST=35.199.98.45
+export ESHOST=35.199.98.45
+export ESPORT=80
+flask run
