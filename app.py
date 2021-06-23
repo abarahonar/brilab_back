@@ -13,7 +13,7 @@ PAGE_SIZE = 10
 app = Flask(__name__)
 conn = connect(dbname=getenv("DBNAME"), user=getenv("DBUSER"),
                password=getenv("DBPASS"), host=getenv("DBHOST"))
-es = Elasticsearch([{"host": "35.199.98.45", "port": 80}])
+es = Elasticsearch([{"host": getenv("ESHOST"), "port": getenv("ESPORT")}])
 
 
 @cache
@@ -88,8 +88,9 @@ def search():
     return payload
 
 
-@app.route("/api/get", methods=["GET"])
+@app.route("/api/get", methods=["POST"])
 def get():
+    print("Entre")
     data = request.json
     payload = process_get(data)
     return payload
