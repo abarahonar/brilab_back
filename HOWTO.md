@@ -3,7 +3,7 @@ Hay 3 rutas
 ## Búsquedas por texto
 La ruta `/api/search` es para realizar consultas de texto dentro de todos los documentos. Este requiere 2 parametros en la ruta, `text` y `page`.
 ## Búsqueda general
-La ruta `/api/get` es para realizar una búsqueda más general. Si se realiza la búsqueda sinningún dato, se retornará todo las 10 primeras ocurrencias (este valor se puede cambiar en el back).
+La ruta `/api/get` es para realizar una búsqueda más general. Si se realiza la búsqueda sin ningún dato, se retornará todo las 10 primeras ocurrencias (este valor se puede cambiar en el back).
 Esta ruta acepta el objeto.
 ```
 {

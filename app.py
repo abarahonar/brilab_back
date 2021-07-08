@@ -5,12 +5,13 @@ from psycopg2 import connect
 from os import getenv
 from functools import cache
 from elasticsearch import Elasticsearch
-
+from flask_cors import CORS
 
 PAGE_SIZE = 10
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 conn = connect(dbname=getenv("DBNAME"), user=getenv("DBUSER"),
                password=getenv("DBPASS"), host=getenv("DBHOST"))
 es = Elasticsearch([{"host": getenv("ESHOST"), "port": getenv("ESPORT")}])
