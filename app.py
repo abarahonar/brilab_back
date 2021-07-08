@@ -52,8 +52,11 @@ def process_search(text: str, page: int):
         "_source": False
     })
     filenames = []
+    print(res)
     for hit in res["hits"]["hits"]:
         filenames.append(hit["fields"]["filename"][0])
+    if not filenames:
+        return {}
     filenames = tuple(filenames)
     cur = conn.cursor()
     cur.execute("SELECT filename, name, region, sector, year, content FROM conflictos " +
@@ -85,6 +88,7 @@ def process_get(data: dict):
 def search():
     text = request.args.get("text")
     page = request.args.get("page", type=int)
+    page = 1 if page is None else page
     payload = process_search(text, page)
     return payload
 
